@@ -11,6 +11,7 @@ export class SecureByJWTMiddleware implements NestMiddleware {
 
   async use(req: Request, res: Response, next: NextFunction) {
     const auth = req.headers['x-authorization']? req.headers['x-authorization']: res.status(403);
+    
     const apiToken = req.headers['x-api-token'];
 
     let tokenValid = false;
