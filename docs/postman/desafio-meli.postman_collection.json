@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "a004a506-3f1c-4e00-97c2-c47d32310f25",
+		"name": "desafio-meli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9023507"
+	},
+	"item": [
+		{
+			"name": "Get access",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-token",
+						"value": "{{API_TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/access",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Items",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.MTIzNA.giOMsX_xFgJ6fKrkSKYBHwhXnGuw8XeKiEYq_qfiRWo",
+						"type": "text"
+					},
+					{
+						"key": "x-api-token",
+						"value": "1234",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/items?search=123",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"items"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Items Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.MTIzNA.giOMsX_xFgJ6fKrkSKYBHwhXnGuw8XeKiEYq_qfiRWo",
+						"type": "text"
+					},
+					{
+						"key": "x-api-token",
+						"value": "1234",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/items/MLC1201071875",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"items",
+						"MLC1201071875"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ItemsList from MELI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.mercadolibre.com/sites/MLC/search?q=123",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"sites",
+						"MLC",
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Item from MELI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.mercadolibre.com/items/MLC1201071875",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"items",
+						"MLC1201071875"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Item description from MELI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.mercadolibre.com/items/MLC1201071875/description",
+					"protocol": "https",
+					"host": [
+						"api",
+						"mercadolibre",
+						"com"
+					],
+					"path": [
+						"items",
+						"MLC1201071875",
+						"description"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
