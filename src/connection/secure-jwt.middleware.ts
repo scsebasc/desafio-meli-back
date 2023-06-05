@@ -6,10 +6,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 @Injectable()
 export class SecureByJWTMiddleware implements NestMiddleware {
   X_API_TOKEN = process.env.API_TOKEN;
-  console.log(X_API_TOKEN);
-  
   KEY = process.env.KEY;
-  console.log(KEY);
   constructor(private readonly jwt: JwtService) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
