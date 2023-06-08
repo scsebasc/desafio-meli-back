@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Param, Query } from '@nestjs/common';
 import { GetItemsResponse, GetItemDescriptionResponse } from 'src/dto/get-item-response.dto';
-import { ItemService } from 'src/services/item.service';
+import { ItemService } from '../services/item.service';
 
 @Controller()
 export class ItemController {

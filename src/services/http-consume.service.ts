@@ -1,11 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import axios from 'axios'
 
 @Injectable()
 export class HttpConsumeService {
-  constructor(private httpService: HttpService) {}
 
   // https://developers.mercadolibre.cl/es_ar/items-y-busquedas
   async getItemsFromMELI(query: string): Promise<any> {

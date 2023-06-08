@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { NextFunction, Request, Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { Injectable, NestMiddleware } from '@nestjs/common';
+import { FastifyRequest, FastifyReply } from 'fastify';
 
 @Injectable()
 export class SecureByJWTMiddleware implements NestMiddleware {
@@ -9,28 +9,30 @@ export class SecureByJWTMiddleware implements NestMiddleware {
   KEY = process.env.KEY;
   constructor(private readonly jwt: JwtService) {}
 
-  async use(req: Request, res: Response, next: NextFunction) {
-    const auth = req.headers['x-authorization']? req.headers['x-authorization']: res.status(403);
-    
-    const apiToken = req.headers['x-api-token'];
+  async use(req: FastifyRequest['raw'], res: FastifyReply['raw'], next: any) {
+    try {
+      const auth = req.headers['x-authorization'];
 
-    let tokenValid = false;
+      const apiToken = req.headers['x-api-token'];
 
-    if (typeof apiToken != 'undefined' && apiToken == this.X_API_TOKEN) {
-      tokenValid = true;
-    }
+      let tokenValid = false;
 
-    if (typeof auth != 'undefined' && tokenValid) {
-      try {
+      if (typeof apiToken != 'undefined' && apiToken == this.X_API_TOKEN) {
+        tokenValid = true;
+      }
+
+      if (typeof auth != 'undefined' && tokenValid) {
         await this.jwt.verifyAsync(auth.toString(), {
-          secret: this.KEY
+          secret: this.KEY,
         });
         next();
-      } catch (error) {
-        res.status(403).send(error);
+      } else {
+        res.statusCode = 403;
+        res.end();
       }
-    } else {
-      res.sendStatus(403);
+    } catch (error) {
+        res.statusCode = 500;
+        res.end();
     }
   }
 }

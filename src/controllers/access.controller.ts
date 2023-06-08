@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Headers } from '@nestjs/common';
 import { Access } from 'src/dto/access.interface';
-import { AccessService } from 'src/services/access.service';
+import { AccessService } from '../services/access.service';
 
 @Controller()
 export class AccessController {
